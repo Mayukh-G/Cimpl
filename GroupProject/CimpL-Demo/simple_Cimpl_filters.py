@@ -4,8 +4,9 @@ Some simple Cimpl image processing filters.
 Last edited: Nov. 12, 2019
 """
 
-from GroupProject.Cimpl import choose_file, load_image, copy, create_color, set_color,\
-                  show, Image, get_color
+from Cimpl import choose_file, load_image, copy, create_color, set_color,\
+                  show, Image
+
 
 def invert(image: Image) -> Image:
     """Return an inverted copy of image; that is, an image that is a colour 

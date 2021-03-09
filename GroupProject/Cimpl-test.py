@@ -1,4 +1,4 @@
-import GroupProject.Cimpl as Cimpl
+import Cimpl as Cimpl
 
 img = Cimpl.load_image("./CimpL-Demo/green_image.jpg")
 w = img.get_width()

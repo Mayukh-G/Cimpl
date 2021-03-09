@@ -4,8 +4,8 @@ Test functions for function grayscale in simple_Cimpl_filters.
 Last edited: Nov. 16, 2019
 """
 
-from GroupProject.Cimpl import choose_file, create_color, create_image, get_color,\
-                  set_color, load_image, Image
+from Cimpl import choose_file, create_color, create_image, get_color,\
+                  set_color, load_image
 
 from .simple_Cimpl_filters import grayscale
 

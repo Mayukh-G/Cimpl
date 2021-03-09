@@ -12,8 +12,7 @@ obtained by passing 'original' to the filter - what if the filter has a bug?
 Instead, they were calculated 'by hand', based on the filter's specification.
 """
 
-from GroupProject.Cimpl import create_color, create_image, get_color, set_color,\
-                  Image
+from Cimpl import create_color, create_image, get_color, set_color
 
 from .simple_Cimpl_filters import invert
 
