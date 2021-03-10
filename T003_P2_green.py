@@ -5,8 +5,7 @@ Group: T003
 """
 
 from Cimpl import *
-from test_grayscale import check_equal
-
+from unit_testing import check_equal
 
 def green_filter(image: Image) -> Image:
     """
@@ -23,7 +22,7 @@ def green_filter(image: Image) -> Image:
         green = create_color(0, g, 0)
         set_color(new_image, x, y, green)
     return new_image
-
+  
 
 def test_green_filter() -> None:
     """
@@ -50,7 +49,6 @@ def test_green_filter() -> None:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                      col, get_color(expected, x, y))
 test_green_filter()
-
 
 
 
