@@ -34,14 +34,14 @@ def test_blue_filter() -> None:
     """
     
     original = create_image(3,1)
-    set_color(original,0,0,create_color(255,255,255))
-    set_color(original,1,0,create_color(255,255,255))
-    set_color(original,2,0,create_color(255,255,255))
+    set_color(original,0,0,create_color(90,120,60))
+    set_color(original,1,0,create_color(234,250,255))
+    set_color(original,2,0,create_color(255,80,210))
     
     expected = create_image(3,1)
-    set_color(expected,0,0,create_color(0,0,255))
+    set_color(expected,0,0,create_color(0,0,60))
     set_color(expected,1,0,create_color(0,0,255))
-    set_color(expected,2,0,create_color(0,0,255))
+    set_color(expected,2,0,create_color(0,0,210))
     
     actual_filtered_image = blue_filter(original)
     
