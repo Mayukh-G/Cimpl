@@ -51,7 +51,7 @@ def test_blue_filter() -> None:
 #-------------------------------------------------------------------------
 #Main Script:
 
-#show(blue_filter(load_image(choose_file())))
+
 
 file = choose_file()
 image = load_image(file)
