@@ -20,11 +20,8 @@ def red_channel(image: Image) -> Image:
     for pixle in duplicate:
         x, y, (r,g,b) = pixle
         new_color = create_color(r,0,0) 
-        set_color (duplicate, x,y,new_color)
-    red_image = duplicate
-    show(image)
-    show(red_image)     
-    return red_image
+        set_color (duplicate, x,y,new_color)    
+    return duplicate
 
 def test_red_channel() ->None:
     '''
@@ -52,7 +49,10 @@ def test_red_channel() ->None:
                      col, get_color(expected, x, y))  
 
 # Main Script 
-file = choose_file()
-image = load_image(file)
-red_image = red_channel(image)
-test_red_channel()
+if __name__ == '__main__':   
+    file = choose_file()
+    image = load_image(file)
+    red_image = red_channel(image)
+    show(image)
+    show(red_image)
+    test_red_channel()
