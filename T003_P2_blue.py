@@ -51,11 +51,11 @@ def test_blue_filter() -> None:
 #-------------------------------------------------------------------------
 #Main Script:
 
+if __name__ in "__main__":
 
+    file = choose_file()
+    image = load_image(file)
+    blue_filtered_image = blue_filter(image)
+    show(blue_filtered_image)
 
-file = choose_file()
-image = load_image(file)
-blue_filtered_image = blue_filter(image)
-show(blue_filtered_image)
-
-test_blue_filter()
+    test_blue_filter()
