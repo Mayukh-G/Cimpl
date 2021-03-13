@@ -48,7 +48,15 @@ def test_green_filter() -> None:
     for x, y, col in green_test:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                      col, get_color(expected, x, y))
-test_green_filter()
+        
+        
+if __name__ == '__main__':
+
+    image = load_image(choose_file())
+    green_filtered = green_filter(image)
+    show(green_filtered)    
+    test_green_filter()
+
 
 
 
