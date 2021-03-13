@@ -51,7 +51,7 @@ def test_blue_filter() -> None:
 #-------------------------------------------------------------------------
 #Main Script:
 
-if __name__ in "__main__":
+if __name__ == '__main__':
 
     file = choose_file()
     image = load_image(file)
