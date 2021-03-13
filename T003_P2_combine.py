@@ -1,6 +1,7 @@
 # Author : Mayukh Gautam
 # Number : 101181018
 # Course : ECOR1042G
+# Group  : T003
 from Cimpl import Image, Color, show, choose_file
 from unit_testing import check_equal
 
