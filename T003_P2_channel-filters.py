@@ -200,12 +200,3 @@ def combine_test() -> None:  # Author : Mayukh Gautam
     output = combine(test_r, test_g, test_b)
     for i, j, col in output:
         check_equal(f"Edge case small value in red, green, blue at {i, j}", col, expect.get_color(i, j))
-
-if __name__ == '__main__':
-    # Main test script using all function
-    original = Image(filename=choose_file())
-    r_filtered = red_channel(original)
-    b_filtered = blue_filter(original)
-    g_filtered = green_filter(original)
-    combined = combine(g_filtered, b_filtered, r_filtered)
-    save_as(combined, "output-img-channel-filters.png")
