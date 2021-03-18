@@ -51,9 +51,3 @@ def posterize_filter(img: Image) -> Image:
                                    blue=_adjust_component(b),
                                    green=_adjust_component(g)))
     return fill
-
-
-if __name__ == '__main__':
-    to_postrize = Image(filename=choose_file())
-    res = posterize_filter(to_postrize)
-    show(res)
