@@ -36,15 +36,15 @@ def three_tone(colour1: str, colour2: str, colour3: str, image: Image)-> Image:
         brightness = round((r+g+b)/3)
         
         if brightness <= 84:
-            (r,b,g) = colour1
+            (r,g,b) = colour1
             new_colour = create_color(r,g,b)
         
         if 85<=brightness<= 170:
-            (r,b,g) = colour2
+            (r,g,b) = colour2
             new_colour = create_color(r,g,b)
         
         else:
-            (r,b,g) = colour3
+            (r,g,b) = colour3
             new_colour = create_color(r,g,b) 
             
         set_color (duplicate, x,y,new_colour)   
