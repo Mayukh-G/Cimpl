@@ -2,10 +2,11 @@
 #Student ID: 101195221
 #Group No.: T003
 #----------------------------------------------------------------------
-import Cimpl *
+from Cimpl import *
 from T003_P3_extreme import extreme_contrast
-
-def test_extreme(image: Image) -> str:
+from unit_testing import check_equal
+#----------------------------------------------------------------------
+def test_extreme() -> None:
     """
     Test function for extreme contrast filter.
     
@@ -13,11 +14,29 @@ def test_extreme(image: Image) -> str:
     """
 
     original = create_image(3,1)
-    set_color = (test_image, 0,0, (160,230,40))
-    set_color = (test_image, 1,0, (225,10,130))
-    set_color = (test_image, 2,0, (20,100,255))
+    set_color = (original, 0,0, (160,230,40))
+    set_color = (original, 1,0, (225,10,130))
+    set_color = (original, 2,0, (20,100,255))
     
-    filtered_image = (extreme_contrast(original))
+    expected = create_image(3,1)
+    set_color = (expected, 0,0, (255,255,0))
+    set_color = (expected, 1,0, (225,0,255))
+    set_color = (expected, 2,0, (0,0,255))
+    
+    actual_filtered_image = extreme_contrast(original)
+    
+    for x,y, col in actual_filtered_image:
+        check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
+                     col, get_color(expected, x, y))
+#-----------------------------------------------------------------------
+#Main Script        
+if __name__ == "__main__":
+    file = choose_file()
+    image = load_image(file)
+    extreme_image = extreme_contrast(image)
+    show(extreme_image)
+    
+    test_extreme()
     
     
     
