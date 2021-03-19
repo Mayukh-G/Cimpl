@@ -40,11 +40,11 @@ def three_tone(colour1: str, colour2: str, colour3: str, image: Image) -> Image:
 
         if brightness <= 84:
             (r, g, b) = colour1
-            new_colour = create_color(r, g, b)  # This can be improved by
+            new_colour = create_color(r, g, b)
 
         if 85 <= brightness <= 170:
             # I Suggest using elif instead of just if here. It makes it so that if the previous statement which is this
-            # case is `if brightness <= 84` is true. This check is ignored, otherwise python will check if this
+            # case is `if brightness <= 84` is true, this check is ignored, otherwise python will check if this
             # statement is true even though it doesnt need to
             (r, g, b) = colour2
             new_colour = create_color(r, g, b)
