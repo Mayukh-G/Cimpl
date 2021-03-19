@@ -2,7 +2,7 @@
 # Number : 101181018
 # Course : ECOR1042G
 # Group  : T003
-from Cimpl import Image, Color, show, choose_file
+from Cimpl import Image, Color
 
 
 def _adjust_component(value: int) -> int:
