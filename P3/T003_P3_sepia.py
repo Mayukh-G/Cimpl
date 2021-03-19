@@ -8,10 +8,12 @@ from simple_Cimpl_filters import grayscale
 #---------------------------------------------------------------------
 def sepia_filter(image: Image) -> Image:
     """
-    Returns a copy of the original image with the sepia filter applied. 
+    Returns a copy of the original image with the sepia filter applied.
     
-    >>>
-    >>>
+    >>> file = choose_file()
+    >>> image = load_image(file)
+    >>> filtered_image = sepia_filter(image)
+    >>> show(filtered_image)
     """
     
     new_image = copy(image)
@@ -26,6 +28,12 @@ def sepia_filter(image: Image) -> Image:
 
 #Main Script
 #---------------------------------------------------------------------
-show(sepia_filter(load_image(choose_file())))
+#show(sepia_filter(load_image(choose_file())))
 #print(get_color(sepia_filter(load_image(choose_file())),1,1))
+
+file = choose_file()
+image = load_image(file)
+filtered_image = sepia_filter(image)
+show(filtered_image)
+
 
