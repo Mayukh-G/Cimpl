@@ -10,18 +10,18 @@ def test_extreme() -> None:
     """
     Test function for extreme contrast filter.
     
-    >>> test_extreme
+    >>> test_extreme()
     """
 
     original = create_image(3,1)
-    set_color = (original, 0,0, (160,230,40))
-    set_color = (original, 1,0, (225,10,130))
-    set_color = (original, 2,0, (20,100,255))
+    set_color(original, 0,0,create_color(160,230,40))
+    set_color(original, 1,0,create_color(225,10,130))
+    set_color(original, 2,0,create_color(20,100,255))
     
     expected = create_image(3,1)
-    set_color = (expected, 0,0, (255,255,0))
-    set_color = (expected, 1,0, (225,0,255))
-    set_color = (expected, 2,0, (0,0,255))
+    set_color(expected, 0,0,create_color(255,255,0))
+    set_color(expected, 1,0,create_color(255,0,255))
+    set_color(expected, 2,0,create_color(0,0,255))
     
     actual_filtered_image = extreme_contrast(original)
     
