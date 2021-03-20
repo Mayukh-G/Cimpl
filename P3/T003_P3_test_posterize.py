@@ -36,6 +36,4 @@ def test_posterize()-> None:
 # Main Script 
 if __name__ == '__main__':
     test_posterize()
-    
-    
-    
+

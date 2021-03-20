@@ -12,6 +12,13 @@ PINK_C = (255, 0, 255)
 
 
 def check_three_tone() -> None:
+    """
+    Tests the function three_tone. Tests string association, border values, and non-integer brightness
+    Prints the results of the tests.
+
+    >>> check_three_tone()
+    None
+    """
     # Checking string association, with colours
     img_test = Image(width=2, height=2)
     img_test.set_color(0, 0, Color(1, 1, 1))
