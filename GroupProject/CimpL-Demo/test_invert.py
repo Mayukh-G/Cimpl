@@ -14,7 +14,7 @@ Instead, they were calculated 'by hand', based on the filter's specification.
 
 from Cimpl import create_color, create_image, get_color, set_color
 
-from .simple_Cimpl_filters import invert
+from simple_Cimpl_filters import invert
 
 def check_equal(description: str, outcome, expected) -> None:
     """

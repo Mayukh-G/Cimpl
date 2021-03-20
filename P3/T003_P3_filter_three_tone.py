@@ -63,12 +63,3 @@ if __name__ == '__main__':
     image = load_image(choose_file())
     x = three_tone('blue', 'white', 'blood', image)
     show(x)
-
-'''
-Proposed test cases 
-- pixels in each range
-- pixels on boundary values, (0,0,0),(255,255,255),(84,84,84)
-- pixels with avg brightness as a float 
-- argument 3 tone colors are all the same
-- when an image with no pixels is loads 
-'''

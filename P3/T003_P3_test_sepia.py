@@ -3,11 +3,10 @@ Author: Alex Watson
 Group: T003
 StudentNum: 101178559
 """
-
-from T003_P3_filter_sepia import sepia
+from Cimpl import *
+from T003_P3_filter_sepia import sepia_filter
 from unit_testing import check_equal
-from  simple_Cimpl_filters import grayscale
-
+from simple_Cimpl_filters import grayscale
 
 
 def test_sepia() -> None:
@@ -27,7 +26,7 @@ def test_sepia() -> None:
     set_color(original, 1, 0,  create_color(67, 61, 55)) #Light gray
     set_color(original, 2, 0,  create_color(232, 215, 200))  #Dark gray 
     
-    sepia_test = sepia(original)
+    sepia_test = sepia_filter(original)
     for x, y, col in sepia_test:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                      col, get_color(expected, x, y))

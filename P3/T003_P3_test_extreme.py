@@ -3,7 +3,7 @@
 #Group No.: T003
 #----------------------------------------------------------------------
 from Cimpl import *
-from T003_P3_extreme import extreme_contrast
+from .T003_P3_filter_extreme import extreme_contrast
 from unit_testing import check_equal
 #----------------------------------------------------------------------
 def test_extreme() -> None:

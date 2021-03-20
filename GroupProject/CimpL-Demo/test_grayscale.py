@@ -7,7 +7,7 @@ Last edited: Nov. 16, 2019
 from Cimpl import choose_file, create_color, create_image, get_color,\
                   set_color, load_image
 
-from .simple_Cimpl_filters import grayscale
+from simple_Cimpl_filters import grayscale
 
 def check_equal(description: str, outcome, expected) -> None:
     """
