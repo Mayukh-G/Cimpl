@@ -19,12 +19,12 @@ def test_sepia() -> None:
     original = create_image(3, 1) #Creating an original image to be tested  by the sepia filter.
     set_color(original, 0, 0,  create_color(45, 67, 233))
     set_color(original, 1, 0,  create_color(120, 27, 38))
-    set_color(original, 2, 0,  create_color(255, 37, 54))    
+    set_color(original, 2, 0,  create_color(255, 237, 154))    
     
     expected1 = create_image(3, 1)
-    set_color(original, 0, 0,  create_color(132, 115, 97)) #Medium gray
-    set_color(original, 1, 0,  create_color(67, 61, 54)) #Light gray
-    set_color(original, 2, 0,  create_color(232, 215, 199))  #Dark gray 
+    set_color(expected1, 0, 0,  create_color(132, 115, 97)) #Medium gray
+    set_color(expected1, 1, 0,  create_color(67, 61, 54)) #Light gray
+    set_color(expected1, 2, 0,  create_color(232, 215, 199))  #Dark gray 
     
     sepia_test = sepia_filter(original)
     for x, y, col in sepia_test:
@@ -33,5 +33,4 @@ def test_sepia() -> None:
         
 #Main Script
 test_sepia()
-    
     
