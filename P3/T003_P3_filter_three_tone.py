@@ -36,21 +36,21 @@ def three_tone(colour1: str, colour2: str, colour3: str, image: Image) -> Image:
         x, y, (r, g, b) = pixel
         brightness = round((r + g + b) / 3)
         if brightness <= 84:
-            i = 0
+            
             for i in range(len(color_tones)):
                 if color_tones[i][0] == colour1:
                     color, r, g, b = color_tones[i]
                     new_colour = create_color(r, g, b)
-                i += 1            
+                           
         elif 85 <= brightness <= 170:
-            i = 0
+            
             for i in range(len(color_tones)):
                 if color_tones[i][0] == colour2:
                     color, r, g, b = color_tones[i]
                     new_colour = create_color(r, g, b)
-                i += 1                    
+                                  
         else:
-            i = 0
+      
             for i in range(len(color_tones)):
                 if color_tones[i][0] == colour3:
                     color, r, g, b = color_tones[i]
