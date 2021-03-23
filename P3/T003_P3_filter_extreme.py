@@ -34,10 +34,3 @@ def extreme_contrast(image: Image) -> Image:
         extreme = create_color(r, g, b)
         set_color(new_image, x, y, extreme)
     return new_image
-
-
-#Main Script
-
-image = load_image(choose_file())
-extreme_new = extreme_contrast(image)
-show(extreme_new) 

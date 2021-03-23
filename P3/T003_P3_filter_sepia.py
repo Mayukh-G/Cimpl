@@ -32,14 +32,6 @@ def sepia_filter(image: Image) -> Image:
             
     return gray_image
 
-#Main Script
-#---------------------------------------------------------------------
-#show(sepia_filter(load_image(choose_file())))
-#print(get_color(sepia_filter(load_image(choose_file())),1,1))
 
-file = choose_file()
-image = load_image(file)
-filtered_image = sepia_filter(image)
-show(filtered_image)
 
 
