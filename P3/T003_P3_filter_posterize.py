@@ -2,7 +2,7 @@
 # Number : 101181018
 # Course : ECOR1042G
 # Group  : T003
-from Cimpl import Image, Color
+from Cimpl import *
 
 
 def _adjust_component(value: int) -> int:
@@ -39,9 +39,9 @@ def posterize_filter(img: Image) -> Image:
     pixel and then assigns the returned value to that same pixel.
 
     Does not modify the original Image object.
-
-    >>> posterize_filter(img)
-    <Image object at (Memory Address)>
+    >>> image = Image(filename=choose_file())
+    >>> posterized = posterize_filter(image)
+    >>> show(posterized)
 
     :returns: A posturized image
     """
