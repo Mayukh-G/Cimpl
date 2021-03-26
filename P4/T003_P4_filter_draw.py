@@ -13,12 +13,62 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
     return None
 
 
-def _exhaustive_search():
-    return None
+def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> int:
+    '''
+    Solves f(x)-val=0 for x between 0 and max_x where polycoeff contains the
+    coefficients of f, using EPSILON of 1 (as we only need ints for pixels).
+    Returns None if there is no solution between the bounds.
+
+    >>> _exhaustive_search(639,[6.33e-03,-3.80e+00,5.57e+02],0)
+    253
+    >>> _exhaustive_search(639,[7.24e-04,-1.19e+00,4.51e+02],0)
+    590
+    >>> _exhaustive_search(639,[7.24e-04,-1.19e+00,4.51e+02],479)
+    None
+    >>>_exhaustive_search(5,[1e+00,-5e+00,4e+00],0)
+    1 
+    '''
+    EPSILON = 1
+    step = 1
+    guess = 0.0
+    while abs(npy.polyval(polycoeff, guess) - val) >= EPSILON and guess <= max_x:
+        guess += step
+    if guess > max_x:
+        return None
+    else:
+        return guess 
+    
+
+def _image_border_finding(pixel_y: int, pixel_y: int, polycoeff: list) -> list:
+    '''
+    returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y 
+    vertical dimensions given by pixel_y. 
+    >>>_image_border_finding(10,10,[1e+00,-5e+00,4e+00])
+    [(0,4.0),(1.0,0),(6.0,10)]
+    >>>
+    >>>
+    >>>
+    
+    '''
+    border_intersections = []
+    upper_intersect = (_exhaustive_search( pixel_x, polycoeff,0))
+    #top and bottom intersections 
+    if upper_intersect != None:
+        border_intersections += [(upper_intersect, 0)]
+    lower_intersect = (_exhaustive_search( pixel_x, polycoeff,pixel_y))
+    if lower_intersect != None:
+        border_intersections += [(lower_intersect, pixel_y)]
+    
+    #right and left side intersections 
+    if 0 <= npy.polyval(polycoeff,0) <= pixel_y:
+        border_intersections += [(0, npy.polyval(polycoeff,0))]
+    if 0 <= npy.polyval(polycoeff,pixel_x) <= pixel_y:
+        border_intersections += [(pixel_x, npy.polyval(polycoeff,pixel_x))]
+    
+    border_intersections.sort()
+    return border_intersections 
 
 
-def _image_border_finding(img_width: int, img_height: int, coefficients: List[int]) -> List[Tuple[int, int]]:
-    return None
 
 
 COLOURS = (
