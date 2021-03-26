@@ -33,8 +33,6 @@ COLOURS = (
     ("gray", Color(128, 128, 128))
 )
 
-Fx = npy.polyval
-
 
 def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> Image:
     """
@@ -88,14 +86,15 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
     allow = True
     for x in range(image.get_width()):
         if (x not in border_x) and allow:  # This will only draw if the function is within range of the image
-            y = int(Fx(poly_coefficients, x))  # polyval returns a numpy.int32 type. This in incompatible with Cimpl
+            # polyval returns a numpy.int32 type. This in incompatible with Cimpl
+            y = int(npy.polyval(poly_coefficients, x))
             for j in range(9):  # Adding the thickness of the line. Only if it is within range of the image
                 r = y - 4 + j
                 if r in range(image.get_height()):
                     img_c.set_color(x, r, chosen_col)
         else:
             # Checking if the next point is within range of the image
-            allow = 0 < Fx(poly_coefficients, x+1) < image.get_height()
+            allow = 0 < npy.polyval(poly_coefficients, x+1) < image.get_height()
     return img_c
 
 
