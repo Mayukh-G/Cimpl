@@ -22,8 +22,9 @@ def flip_horizontal(image: Image) -> Image:
 #---------------------------------------------------------------------
 # Main Script
 
-file = choose_file()
-image = load_image(file)
-horz_image = flip_horizontal(image)
-show(horz_image)
+if __name__ == "__main__":
+    file = choose_file()
+    image = load_image(file)
+    horz_image = flip_horizontal(image)
+    show(horz_image)
        
