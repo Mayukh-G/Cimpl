@@ -39,7 +39,7 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> int:
         return guess 
     
 
-def _image_border_finding(pixel_y: int, pixel_y: int, polycoeff: list) -> list:
+def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: list) -> list:
     '''
     returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y 
     vertical dimensions given by pixel_y. 
