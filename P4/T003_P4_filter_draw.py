@@ -4,6 +4,7 @@
 # Group  : T003
 from typing import List, Tuple
 from Cimpl import *
+from point_manipulation import sort_points
 import numpy as npy
 import string
 
@@ -74,6 +75,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
             for i in range(len(temp)):
                 temp[i] = int(temp[i])
             coord_internal.append(tuple(temp))
+    coord_internal = sort_points(coord_internal)  # Sort points by ascending x values
 
     poly_coefficients = _interpolation(coord_internal)
     edge_points = _image_border_finding(image.get_width(), image.get_height(), poly_coefficients)
