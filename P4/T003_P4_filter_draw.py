@@ -10,8 +10,7 @@ import string
 
 
 def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
-
-#def _interpolation(points: list) -> list:
+    # Jacob Ridgway
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the 
     quadratic regression polynomial (if user entered more than 3 points).
@@ -20,18 +19,22 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
     >>>
     """
 
-    if len(points_list) <= 2:
+    if len(coord_list) <= 2:
         degree = 1
     else:
         degree = 2
-    x_point, y_point = points
-    
-    return numpy.polyfit(x_point, y_point, degree)
-    
-    return None
+
+    x_point = []
+    y_point = []
+    for point in coord_list:
+        x_point.append(point[0])
+        y_point.append(point[1])
+
+    return npy.polyfit(x_point, y_point, degree)
 
 
 def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
+    # Alexander Christie
     '''
     Solves f(x)-val=0 for x between 0 and max_x where polycoeff contains the
     coefficients of f, using EPSILON of 1 (as we only need ints for pixels).
@@ -46,6 +49,7 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
     >>>_exhaustive_search(5,[1e+00,-5e+00,4e+00],0)
     1 
     '''
+
     EPSILON = 1
     step = 1
     guess = 0.0
@@ -58,6 +62,7 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
     
 
 def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) -> List[Tuple[int, int]]:
+    # Alexander Christie
     '''
     returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y 
     vertical dimensions given by pixel_y. 
@@ -97,7 +102,7 @@ COLOURS = (
 )
 
 
-def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> List[Image, List[Tuple[int]]]:
+def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> list:
     # Author: Mayukh Gautam
     """
     Takes an Image object, a string that represents one of many colors and an optional list of coordinate tuples.
@@ -165,7 +170,8 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
 if __name__ == '__main__':
     im = Image(filename=choose_file())
     drawn = draw_curve(im, "blood")
-    show(drawn)
+    show(drawn[0])
+    print(drawn[1])
 
 
 
