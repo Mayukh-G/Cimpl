@@ -11,7 +11,7 @@ import string
 
 def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
     #Jacob Ridgway
-    if len(points_list) <= 2:
+    if len(coord_list) <= 2:
         degree = 1
     else:
         degree = 2
