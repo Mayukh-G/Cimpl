@@ -10,14 +10,14 @@ import string
 
 
 def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
-
-#def _interpolation(points: list) -> list:
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the 
     quadratic regression polynomial (if user entered more than 3 points).
     
-    >>> 
     >>>
+    
+    >>>
+    
     """
 
     if len(points_list) <= 2:
@@ -27,9 +27,6 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
     x_point, y_point = points
     
     return numpy.polyfit(x_point, y_point, degree)
-    
-    return None
-
 
 def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
     '''
