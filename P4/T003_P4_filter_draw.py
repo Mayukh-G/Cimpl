@@ -14,10 +14,11 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]:
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the 
     quadratic regression polynomial (if user entered more than 3 points).
-
-    >>> _interpolation([(1,2), (2,3), (3,4)])
-    [-8.83424789e-16  1.00000000e+00  1.00000000e+00]
-
+    
+    >>> _interpolation([(1,2),(3,4),(5,6)]
+    [-4.51257486e-17  1.00000000e+00  1.00000000e+00]
+    >>> _interpolation([(7,8),(3,4)])
+    [1. 1.]
     """
     degree = 1 if len(coord_list) <= 2 else 2
 
