@@ -14,11 +14,8 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the 
     quadratic regression polynomial (if user entered more than 3 points).
-    
-    >>> 
-    >>>
-    """
 
+    """
     if len(coord_list) <= 2:
         degree = 1
     else:
