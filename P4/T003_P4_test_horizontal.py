@@ -14,17 +14,18 @@ def horizontal_check() -> None:
     >>> horizontal_check()
     None
     """
+    # Tests if pixels go where they are supposed to and if pixels in the middle stay in the middle
     test_img = Image(width=3, height=3)
-    test_img.set_color(0, 0, Color(0, 0, 0))
-    test_img.set_color(1, 1, Color(0, 0, 0))
-    test_img.set_color(0, 2, Color(0, 0, 0))
+    test_img.set_color(0, 0, Color(0, 0, 0))  # 0 1 1
+    test_img.set_color(1, 1, Color(0, 0, 0))  # 1 0 1
+    test_img.set_color(0, 2, Color(0, 0, 0))  # 0 1 1
 
     # The other pixels are already white by default
 
     expected = Image(width=3, height=3)
-    expected.set_color(2, 0, Color(0, 0, 0))
-    expected.set_color(1, 1, Color(0, 0, 0))
-    expected.set_color(2, 2, Color(0, 0, 0))
+    expected.set_color(2, 0, Color(0, 0, 0))  # 1 1 0
+    expected.set_color(1, 1, Color(0, 0, 0))  # 1 0 1
+    expected.set_color(2, 2, Color(0, 0, 0))  # 1 1 0
 
     res = flip_horizontal(test_img)
     for x, y, col in res:

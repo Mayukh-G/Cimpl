@@ -146,7 +146,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
 
 if __name__ == '__main__':
     im = Image(filename=choose_file())
-    drawn = draw_curve(im, "black")
+    drawn = draw_curve(im, "blood")
     show(drawn)
 
 
