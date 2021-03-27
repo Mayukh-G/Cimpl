@@ -9,17 +9,17 @@ import numpy as npy
 import string
 
 
-def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
-    # Jacob Ridgway
+def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]:
+    # Helped by Jacob Ridgway
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the 
     quadratic regression polynomial (if user entered more than 3 points).
 
+    >>> _interpolation([(1,2), (2,3), (3,4)])
+    [-8.83424789e-16  1.00000000e+00  1.00000000e+00]
+
     """
-    if len(coord_list) <= 2:
-        degree = 1
-    else:
-        degree = 2
+    degree = 1 if len(coord_list) <= 2 else 2
 
     x_point = []
     y_point = []
@@ -31,7 +31,7 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[int]:
 
 
 def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
-    # Alexander Christie
+    # Helped by Alexander Christie
     '''
     Solves f(x)-val=0 for x between 0 and max_x where polycoeff contains the
     coefficients of f, using EPSILON of 1 (as we only need ints for pixels).
@@ -47,10 +47,10 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
     1 
     '''
 
-    EPSILON = 1
+    epsilon = 1
     step = 1
     guess = 0.0
-    while abs(npy.polyval(polycoeff, guess) - val) >= EPSILON and guess <= max_x:
+    while abs(npy.polyval(polycoeff, guess) - val) >= epsilon and guess <= max_x:
         guess += step
     if guess > max_x:
         return None
@@ -59,7 +59,7 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
     
 
 def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) -> List[Tuple[int, int]]:
-    # Alexander Christie
+    # Helped by Alexander Christie
     '''
     returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y 
     vertical dimensions given by pixel_y. 
@@ -69,18 +69,18 @@ def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) ->
     '''
     border_intersections = []
     upper_intersect = (_exhaustive_search( pixel_x, polycoeff,0))
-    #top and bottom intersections 
-    if upper_intersect != None:
+    # top and bottom intersections
+    if upper_intersect is not None:
         border_intersections += [(upper_intersect, 0)]
     lower_intersect = (_exhaustive_search( pixel_x, polycoeff,pixel_y))
-    if lower_intersect != None:
+    if lower_intersect is not None:
         border_intersections += [(lower_intersect, pixel_y)]
     
-    #right and left side intersections 
-    if 0 < npy.polyval(polycoeff,0) < pixel_y:
-        border_intersections += [(0, npy.polyval(polycoeff,0))]
-    if 0 < npy.polyval(polycoeff,pixel_x) < pixel_y:
-        border_intersections += [(pixel_x, npy.polyval(polycoeff,pixel_x))]
+    # right and left side intersections
+    if 0 < npy.polyval(polycoeff, 0) < pixel_y:
+        border_intersections += [(0, npy.polyval(polycoeff, 0))]
+    if 0 < npy.polyval(polycoeff, pixel_x) < pixel_y:
+        border_intersections += [(pixel_x, npy.polyval(polycoeff, pixel_x))]
     
     border_intersections.sort()
     return border_intersections
@@ -100,7 +100,7 @@ COLOURS = (
 
 
 def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> list:
-    # Author: Mayukh Gautam
+    # Mayukh Gautam
     """
     Takes an Image object, a string that represents one of many colors and an optional list of coordinate tuples.
     This function then draws an interpolated curve with a width of 9 pixels using the coordinates provided.
@@ -145,8 +145,8 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
     edge_points = _image_border_finding(image.get_width(), image.get_height(), poly_coefficients)
 
     border_x = []   # Only the x values of the border points
-    for point in edge_points:
-        border_x.append(point[0])
+    for (x, y) in edge_points:
+        border_x.append(x)
 
     # Drawing curve
     allow = True
@@ -158,7 +158,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
                 r = y - 4 + j
                 if r in range(image.get_height()):
                     img_c.set_color(x, r, chosen_col)
-        else:
+        else:  # If else statements avoid unnecessary double loops
             # Checking if the next point is within range of the image
             allow = 0 < npy.polyval(poly_coefficients, x+1) < image.get_height()
     return [img_c, edge_points]
@@ -168,7 +168,6 @@ if __name__ == '__main__':
     im = Image(filename=choose_file())
     drawn = draw_curve(im, "blood")
     show(drawn[0])
-    print(drawn[1])
 
 
 
