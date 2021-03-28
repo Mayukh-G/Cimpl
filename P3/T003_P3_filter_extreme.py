@@ -7,6 +7,7 @@ StudentNum: 101178559
 from Cimpl import *
 from unit_testing import check_equal
 
+
 def extreme_contrast(image: Image) -> Image:
     """
     Returns a copy of an image, where the contrast between each pixel is maximized. 
@@ -17,19 +18,19 @@ def extreme_contrast(image: Image) -> Image:
     """
     new_image = copy(image)
     for x, y, (r, g, b) in image:
-        if r <= 127: #Setting r value
+        if r <= 127:  # Setting r value
             r = 0
         else:
             r = 255
-        
-        if g <= 127: #Setting g value
+
+        if g <= 127:  # Setting g value
             g = 0
-        else: 
+        else:
             g = 255
-        
-        if b <= 127: #Setting b value
+
+        if b <= 127:  # Setting b value
             b = 0
-        else: 
+        else:
             b = 255
         extreme = create_color(r, g, b)
         set_color(new_image, x, y, extreme)
