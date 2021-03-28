@@ -62,8 +62,10 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:
 def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) -> List[Tuple[int, int]]:
     # Helped by Alexander Christie
     '''
-    returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y 
-    vertical dimensions given by pixel_y. 
+    Returns an ordered list of the pixels coordinates where the fitted curve 
+    given by the coefficient in polycoeff crosses the vertical or horizontal
+    boarders of an image with horizontal dimension given by pixel_x and y 
+    vertical dimensions given by pixel_y.
     >>>_image_border_finding(10,10,[1e+00,-5e+00,4e+00])
     [(0,4.0),(1.0,0),(6.0,10)]
     
