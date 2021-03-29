@@ -148,7 +148,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
         poly_coefficients = _interpolation(sort_points(coords))  # Sort points by ascending x values and interpolate
     edge_points = _image_border_finding(image.get_width(), image.get_height(), poly_coefficients)
 
-    return_points = set()  #
+    return_points = set()  # Making sure duplicate points are not in the list. (If function exits at a corner pixel)
     for (x, y) in edge_points:
         return_points.add((round(x), round(y)))
     return_points = sort_points(list(return_points))
@@ -156,9 +156,11 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
     # Drawing curve
     for x in range(image.get_width()):
         # This will only draw if the function is within range of the image
-        y = int(npy.polyval(poly_coefficients, x))
+        # For some reason in Wing101 int(5.999999999) is 5. This does not happen on the IDE I use, round() is there so
+        # it can work on Wing101
+        # polyval returns a numpy.int32 type. This in incompatible with Cimpl
+        y = int(round(npy.polyval(poly_coefficients, x)))
         if 0 <= y <= image.get_height():
-            # polyval returns a numpy.int32 type. This in incompatible with Cimpl
             for j in range(9):  # Adding the thickness of the line. Only if it is within range of the image
                 r = y - 4 + j
                 if r in range(image.get_height()):
