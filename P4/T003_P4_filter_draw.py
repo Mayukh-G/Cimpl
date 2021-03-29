@@ -75,7 +75,7 @@ def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) ->
     # top and bottom intersections
     if upper_intersect is not None:
         border_intersections += [(upper_intersect, 0)]
-    lower_intersect = (_exhaustive_search( pixel_x, polycoeff, pixel_y))
+    lower_intersect = (_exhaustive_search(pixel_x, polycoeff, pixel_y))
     if lower_intersect is not None:
         border_intersections += [(lower_intersect, pixel_y)]
     
@@ -150,15 +150,15 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
 
     return_points = set()  # Making sure duplicate points are not in the list. (If function exits at a corner pixel)
     for (x, y) in edge_points:
-        return_points.add((round(x), round(y)))
+        return_points.add((round(x), round(y)))  # Eliminating points with non integer values such as: 1.9999 or 1e-18
     return_points = sort_points(list(return_points))
 
     # Drawing curve
     for x in range(image.get_width()):
-        # This will only draw if the function is within range of the image
-        # For some reason in Wing101 int(5.999999999) is 5. This does not happen on the IDE I use its 6, round() is
-        # there so it works on Wing101
-        # polyval returns a numpy.int32 type. This in incompatible with Cimpl, so the int constructor is used
+        # This will only draw if the function is within range of the image.
+        # For some reason in Wing101 int(5.999999999) is 5. This does not happen on the IDE I use, in that it's 6,
+        # round() is there so it works on Wing101.
+        # polyval returns a numpy.int32 type. This in incompatible with Cimpl, so the int constructor is used.
         y = int(round(npy.polyval(poly_coefficients, x)))
         if 0 <= y <= image.get_height():
             for j in range(9):  # Adding the thickness of the line. Only if it is within range of the image
@@ -170,7 +170,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
 
 if __name__ == '__main__':
     im = Image(filename=choose_file())
-    drawn = draw_curve(im, "blood")
+    drawn = draw_curve(im, "pink")
     show(drawn[0])
 
 
