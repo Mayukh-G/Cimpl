@@ -27,6 +27,17 @@ def test_draw() -> None:
     for x, y, col in test_curve[0]:
         check_equal('Checking pixel @(' + str(x) + ', ' + str(y) + ')',
                     col, get_color(expected, x, y))
+        
+        
+    #Testing Return Points
+    expected_return_points = [(0,0), (20,20)]
+    if expected_return_points == test_curve[1]:
+        result = "PASSED"
+    else:
+        result = "FAILED"
+    print("Checking return points: ", result)
+    print("Expected: ", expected_return_points, ", got: ", test_curve[1])
+        
 
 
 # Main Script:
