@@ -12,11 +12,11 @@ import string
 
 def detect_edges(image: Image, threshold: float) -> Image:  # Alexander Christie
     '''
-    Returns a "pensil scketch" image copie of the image input the pensil scketch
-    is a black and white version of the orignal where when two pixls have a
-    contrasting brighness exceeding the threshold value they will modify the
-    upper pixle to be black if the contrast is less than the threshiold value
-    the upper pixl will be set ot white. The threshold paraeter is a possitive
+    Returns a "pencil sketch" image copy of the image input the pencil sketch
+    is a black and white version of the original where when two pixels have a
+    contrasting brightness exceeding the threshold value they will modify the
+    upper pixel to be black if the contrast is less than the threshold value
+    the upper pixel will be set to white. The threshold parameter is a positive
     number.
     >>> image = load_image(choose_file())
     >>> show(image)
@@ -132,10 +132,12 @@ def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float: # Mayukh
         return guess
 
 
-def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) -> List[Tuple[int, int]]: # Mayukh Gautam
+def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) -> List[Tuple[int, int]]:  # Mayukh Gautam
     # Helped by Alexander Christie
     '''
-    returns an ordered list of the the pixles coordinates where the fitted curve given by the coefficient in polycoeff corsses the veritcal or horrizontal boarders of an image with horrizontal dimenssion given by pixel_x and y
+    Returns an ordered list of the pixels coordinates where the fitted curve
+    given by the coefficient in polycoeff crosses the vertical or horizontal
+    boarders of an image with horizontal dimension given by pixel_x and y
     vertical dimensions given by pixel_y.
     >>>_image_border_finding(10,10,[1e+00,-5e+00,4e+00])
     [(0,4.0),(1.0,0),(6.0,10)]

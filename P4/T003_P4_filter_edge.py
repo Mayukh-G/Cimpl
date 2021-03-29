@@ -8,7 +8,7 @@ from Cimpl import (get_height, copy, create_color, set_color, get_color,
 
 def detect_edges(image: Image, threshold: float) -> Image:
     '''
-     Returns a "pencil sketch" image copy of the image input the pencil sketch
+    Returns a "pencil sketch" image copy of the image input the pencil sketch
     is a black and white version of the original where when two pixels have a 
     contrasting brightness exceeding the threshold value they will modify the 
     upper pixel to be black if the contrast is less than the threshold value 
@@ -24,7 +24,7 @@ def detect_edges(image: Image, threshold: float) -> Image:
     height = get_height(img_copy) 
     for pixel in img_copy:
         x, y, (r, g, b) = pixel
-        if y == (height - 1) : #this means that it is on the bottom 
+        if y == (height - 1):  # this means that it is on the bottom
             new_color = create_color(255,255,255)
             set_color(img_copy, x, y, new_color) 
         else:

@@ -75,7 +75,7 @@ def _image_border_finding(pixel_x: int, pixel_y: int, polycoeff: List[float]) ->
     # top and bottom intersections
     if upper_intersect is not None:
         border_intersections += [(upper_intersect, 0)]
-    lower_intersect = (_exhaustive_search( pixel_x, polycoeff,pixel_y))
+    lower_intersect = (_exhaustive_search( pixel_x, polycoeff, pixel_y))
     if lower_intersect is not None:
         border_intersections += [(lower_intersect, pixel_y)]
     
@@ -142,29 +142,28 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
             for i in range(len(temp)):
                 temp[i] = int(temp[i])
             coord_internal.append(tuple(temp))
-    coord_internal = sort_points(coord_internal)  # Sort points by ascending x values
-
-    poly_coefficients = _interpolation(coord_internal)
+            # Sort points by ascending x values and interpolate
+        poly_coefficients = _interpolation(sort_points(coord_internal))
+    else:
+        poly_coefficients = _interpolation(sort_points(coords))  # Sort points by ascending x values and interpolate
     edge_points = _image_border_finding(image.get_width(), image.get_height(), poly_coefficients)
 
-    border_x = []   # Only the x values of the border points
+    return_points = set()  #
     for (x, y) in edge_points:
-        border_x.append(x)
+        return_points.add((round(x), round(y)))
+    return_points = sort_points(list(return_points))
 
     # Drawing curve
-    allow = True
     for x in range(image.get_width()):
-        if (x not in border_x) and allow:  # This will only draw if the function is within range of the image
+        # This will only draw if the function is within range of the image
+        y = int(npy.polyval(poly_coefficients, x))
+        if 0 <= y <= image.get_height():
             # polyval returns a numpy.int32 type. This in incompatible with Cimpl
-            y = int(npy.polyval(poly_coefficients, x))
             for j in range(9):  # Adding the thickness of the line. Only if it is within range of the image
                 r = y - 4 + j
                 if r in range(image.get_height()):
                     img_c.set_color(x, r, chosen_col)
-        else:  # If else statements avoid unnecessary double loops
-            # Checking if the next point is within range of the image
-            allow = 0 < npy.polyval(poly_coefficients, x+1) < image.get_height()
-    return [img_c, edge_points]
+    return [img_c, return_points]
 
 
 if __name__ == '__main__':
