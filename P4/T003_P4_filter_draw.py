@@ -156,9 +156,9 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
     # Drawing curve
     for x in range(image.get_width()):
         # This will only draw if the function is within range of the image
-        # For some reason in Wing101 int(5.999999999) is 5. This does not happen on the IDE I use, round() is there so
-        # it can work on Wing101
-        # polyval returns a numpy.int32 type. This in incompatible with Cimpl
+        # For some reason in Wing101 int(5.999999999) is 5. This does not happen on the IDE I use its 6, round() is
+        # there so it works on Wing101
+        # polyval returns a numpy.int32 type. This in incompatible with Cimpl, so the int constructor is used
         y = int(round(npy.polyval(poly_coefficients, x)))
         if 0 <= y <= image.get_height():
             for j in range(9):  # Adding the thickness of the line. Only if it is within range of the image
