@@ -47,8 +47,7 @@ function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal}
 
 def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
     # Gathering information
-    # commands = _parse_args(_get_args())
-    commands = [{"Image": Image(filename=choose_file()), "Save": "test.png", "Filters": ["V", "H", "E"]}]
+    commands = _parse_args(_get_args())
     # Executing filters
     for command in commands:
         img = command["Image"]
