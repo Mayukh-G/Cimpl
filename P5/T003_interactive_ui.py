@@ -1,6 +1,6 @@
 '''
 Author : Alexander Christie, Alex Watson
-Student : 101185138, xxxx
+Student : 101185138, 101178559
 Group: T003
 
 from Cimpl import *
