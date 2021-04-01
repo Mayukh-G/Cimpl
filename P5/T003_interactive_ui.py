@@ -21,7 +21,7 @@ comand_dict = {'L': load_image, 'S': save_as, '3': three_tone,
                
 
 # Main UI
-while comand != Q or q:
+while comand != Q or comand !=q:
     comand = str.capitalize(comand)
     if comand_dict.get(comand) != None:
         if type(image) == Image:
