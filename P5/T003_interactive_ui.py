@@ -2,17 +2,18 @@
 Author : Alexander Christie, Alex Watson
 Student : 101185138, xxxx
 Group: T003
-'''
+
+from Cimpl import *
 from T003_image_filters import *
 
-# This part of the UI contains E) D) V) H) Q) 
 
 #Functions used in the UI 4
-comand= input(" L)oad image    S)ave-as \n \
+command= input(" L)oad image    S)ave-as \n \
 3)-tone    X)treme contrast    T)int sepia    P)osterize \n \
 E)dge detect    D)raw curve    V)ertical filp    H)orizontal flip \n \
 Q)uit \n \n : ")
 
+           
 def detect_edges_ui (image: Image) -> Image:
     '''
     Takes the image from the UI and prompts the user to give the additional 
@@ -21,8 +22,9 @@ def detect_edges_ui (image: Image) -> Image:
     >>> Need to add examples 
     >>>
     '''
-    threshold = input("input threshold value: ")
+    threshold = float(input("input threshold value: "))
     image = detect_edges(image, threshold)
+    return image
     
 def draw_curve_ui (image: Image) -> Image:
     '''
@@ -45,27 +47,29 @@ def draw_curve_ui (image: Image) -> Image:
         x = input("input the x coordinate of the desired point or stop to stop inputing points  ")
     return draw_curve(image, col, coords)
     
-
-comand_dict = {'L': load_image, 'S': save_as, '3': three_tone, 
-               'X': extreme_contrast, 'T': sepia_filter, 'P': posterize_filter,
-               'E': detect_edges, 'D': _image_border_finding, 'V':flip_vertical,
-               'H': flip_horizontal, 'Q': quit}
-               
-               
-
-# Main UI
-while comand != Q or comand !=q:
-    comand = str.capitalize(comand)
-    if comand_dict.get(comand) != None:
+# all values in command dict are functions, once coded for their quotations should be removed
+command_dict = {'L': 'load_image', 'S': 'save_as', '3': 'three_tone', 
+               'X': 'extreme_contrast', 'T': 'sepia_filter', 'P': 'posterize_filter',
+               'E': detect_edges_ui, 'D': draw_curve_ui, 'V':flip_vertical,
+               'H': flip_horizontal, 'Q': 'quit'}
+   
+ 
+#Main UI
+image = load_image(choose_file()) #This line should be removed once the load_image function is added 
+command = str.capitalize(command)
+while command != 'Q':
+    command = str.capitalize(command)
+    if command_dict.get(command) != None:
         if type(image) == Image:
-            image = comand_dict.get(comand)(image)
-            
+            image = command_dict.get(command)(image)
+            show(image)
         else: 
             print("No image loaded")
     else:
         print("No such command")
     
-    comand= input(" L)oad image    S)ave-as \n \
+    command= input(" L)oad image    S)ave-as \n \
     3)-tone    X)treme contrast    T)int sepia    P)osterize \n \
     E)dge detect    D)raw curve    V)ertical filp    H)orizontal flip \n \
     Q)uit \n \n : ")    
+    command = str.capitalize(command)
