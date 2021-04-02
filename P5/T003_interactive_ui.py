@@ -37,7 +37,7 @@ def save_as_ui (image: Image) -> None :
     '''
     save_as(image)
     
-def three_tone_ui(image: Image) -> image:
+def three_tone_ui (image: Image) -> Image:
     '''
     Takes the image from the ui and applie a three tone filter. 
     >>>
@@ -47,7 +47,7 @@ def three_tone_ui(image: Image) -> image:
     image = three_tone('cyan', 'blood', 'lemon', image)
     return image
 
-def extreme_ui(image: Image) -> Image:
+def extreme_ui (image: Image) -> Image:
     '''
     Takes and image from the ui and applies an extreme contrast filter
     >>>
@@ -112,14 +112,14 @@ def draw_curve_ui (image: Image) -> Image:
     return draw_curve(image, col, coords)
     
 # all values in command dict are functions, once coded for their quotations should be removed
-command_dict = {'L': 'load_image', 'S': 'save_as', '3': 'three_tone', 
-               'X': 'extreme_contrast', 'T': 'sepia_filter', 'P': 'posterize_filter',
+command_dict = {'L': load_image_ui, 'S': save_as_ui, '3': three_tone_ui, 
+               'X': extreme_ui, 'T': sepia_ui, 'P': posterize_ui,
                'E': detect_edges_ui, 'D': draw_curve_ui, 'V':flip_vertical,
                'H': flip_horizontal, 'Q': 'quit'}
    
  
 #Main UI
-image = load_image(choose_file()) #This line should be removed once the load_image function is added 
+#image = load_image(choose_file()) #This line should be removed once the load_image function is added 
 command = str.capitalize(command)
 while command != 'Q':
     command = str.capitalize(command)
