@@ -2,18 +2,82 @@
 Author : Alexander Christie, Alex Watson
 Student : 101185138, 101178559
 Group: T003
+'''
 
 from Cimpl import *
 from T003_image_filters import *
-
+import sys
 
 #Functions used in the UI 4
+'''
 command= input(" L)oad image    S)ave-as \n \
 3)-tone    X)treme contrast    T)int sepia    P)osterize \n \
 E)dge detect    D)raw curve    V)ertical filp    H)orizontal flip \n \
 Q)uit \n \n : ")
+'''
 
-           
+
+
+def load_image_ui (image: Image) -> Image: 
+    '''
+    Loads the user's desired image
+    >>>
+    >>> Need Examples
+    >>>
+    '''
+    image = load_image(choose_file())
+    return image
+
+def save_as_ui (image: Image) -> None :
+    '''
+    Saves the users image. 
+    >>>
+    >>>Need Examples
+    >>>
+    '''
+    save_as(image)
+    
+def three_tone_ui(image: Image) -> image:
+    '''
+    Takes the image from the ui and applie a three tone filter. 
+    >>>
+    >>>Need Examples
+    >>>
+    '''
+    image = three_tone('cyan', 'blood', 'lemon', image)
+    return image
+
+def extreme_ui(image: Image) -> Image:
+    '''
+    Takes and image from the ui and applies an extreme contrast filter
+    >>>
+    >>>Need Examples
+    >>>
+    '''
+    image = extreme_contrast(image)
+    return image
+
+def sepia_ui (image: Image) -> Image:
+    '''
+    Takes and image from the ui and applies a sepia filter. 
+    >>>
+    >>>Need Examples
+    >>>
+    '''
+    image = sepia_filter(image)
+    return image
+
+def posterize_ui(image: Image) -> Image:
+    '''
+    Takes an image from the user and applies a posterizing filter. 
+    >>>
+    >>>Need Examples
+    >>>
+    '''
+    image = posterize_filter(image)
+    return image
+    
+
 def detect_edges_ui (image: Image) -> Image:
     '''
     Takes the image from the UI and prompts the user to give the additional 
