@@ -124,7 +124,9 @@ command = str.capitalize(command)
 while command != 'Q':
     command = str.capitalize(command)
     if command_dict.get(command) != None:
-        if type(image) == Image:
+        if command =='L':
+            image = load_image(choose_file())
+        elif type(image) == Image:
             image = command_dict.get(command)(image)
             show(image)
         else: 
