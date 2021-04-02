@@ -109,7 +109,7 @@ def draw_curve_ui (image: Image) -> Image:
         tup = (x,y)
         coords += [tup]
         x = input("input the x coordinate of the desired point or stop to stop inputing points  ")
-    return draw_curve(image, col, coords)
+    return draw_curve(image, col, coords)[0]
     
 # all values in command dict are functions, once coded for their quotations should be removed
 command_dict = {'L': load_image_ui, 'S': save_as_ui, '3': three_tone_ui, 
