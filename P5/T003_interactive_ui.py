@@ -10,7 +10,7 @@ import sys
 
 #Functions used in the UI 4
 
-command= input(" L)oad image    S)ave-as \n \
+command = input(" L)oad image    S)ave-as \n \
 3)-tone    X)treme contrast    T)int sepia    P)osterize \n \
 E)dge detect    D)raw curve    V)ertical filp    H)orizontal flip \n \
 Q)uit \n \n : ")
@@ -133,7 +133,7 @@ while command != 'Q':
     else:
         print("No such command")
     
-    command= input(" L)oad image    S)ave-as \n \
+    command = input(" L)oad image    S)ave-as \n \
     3)-tone    X)treme contrast    T)int sepia    P)osterize \n \
     E)dge detect    D)raw curve    V)ertical filp    H)orizontal flip \n \
     Q)uit \n \n : ")    

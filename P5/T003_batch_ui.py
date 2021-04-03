@@ -36,7 +36,15 @@ def _parse_args(unparsed: List[List[str]]) -> List[dict]:
     Return a list of dictionaries. Each dictionary corresponds to one line in the batch file
     {"Image": fn (Image), "Save": sv (str), "Filters": list ("str")}
     """
-    
+    main_list = []
+    for command in unparsed:
+        parsed = dict()
+        img = Image(filename=unparsed[0])
+        save = unparsed[1]
+        a = unparsed[2:]
+        parsed.update({"Image": img})
+        main_list.append(parsed)
+
     parsed = []
     for lists in _get_args():
         parsed.append(dict())
@@ -46,7 +54,8 @@ def _parse_args(unparsed: List[List[str]]) -> List[dict]:
 # Just follow what I was doing, if you don't understand what is happening here or inside modify lmk.Im happy to explain.
 
 
-function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal, "3": three_tone, "X": extreme_contrast, "T": sepia_filter, "P": posterize_filter}
+function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal, "3": three_tone, "X": extreme_contrast,
+                "T": sepia_filter, "P": posterize_filter}
 
 
 def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
@@ -60,16 +69,6 @@ def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
                 img = function_map[filter_arg]("aqua", "blood", "lemon", img)
             elif filter_arg == "E":
                 img = function_map[filter_arg](img, 15)
-            elif filter_arg == "V":
-                img = function_map[filter_arg](img)
-            elif filter_arg == "H":
-                img = function_map[filter_arg](img)
-            elif filter_arg == "X":
-                img = function_map[filter_arg](img)
-            elif filter_arg == "T":
-                img = function_map[filter_arg](img)
-            elif filter_arg == "P":
-                img = function_map[filter_arg](img)
             else:
                 img = function_map[filter_arg](img)
         save_as(img, command["Save"])  # Save image to user inputted location
@@ -77,4 +76,6 @@ def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
 
 if __name__ == '__main__':
     # modify will act as the main function. It will call all other functions
-    modify()
+    # modify()
+    l = [1, 2, 3, 4, 5, 6, 7]
+    print(l[2:])

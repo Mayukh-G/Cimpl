@@ -299,16 +299,13 @@ def _adjust_component(value: int) -> int:  # Mayukh Gautam
 
 def posterize_filter(img: Image) -> Image:  # Mayukh Gautam
     """
-    Takes in an Image object as an argument. Then it cycles through every pixel of the image and reduces the color
-    variance by running the _adjust_component function on the red value, the blue value, and the green value of each
-    pixel and then assigns the returned value to that same pixel.
+    Takes in an Image object as an argument.
+    The function then creates a posterized copy of that image and returns the posterized image.
 
     Does not modify the original Image object.
     >>> image = Image(filename=choose_file())
     >>> posterized = posterize_filter(image)
     >>> show(posterized)
-
-    :returns: A posturized image
     """
     fill = Image(width=img.get_width(), height=img.get_height())
     for i, j, (r, g, b) in img:
