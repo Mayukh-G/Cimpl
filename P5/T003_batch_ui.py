@@ -36,13 +36,17 @@ def _parse_args(unparsed: List[List[str]]) -> List[dict]:
     Return a list of dictionaries. Each dictionary corresponds to one line in the batch file
     {"Image": fn (Image), "Save": sv (str), "Filters": list ("str")}
     """
-    pass
-
-
+    
+    parsed = []
+    for lists in _get_args():
+        parsed.append(dict())
+    return parsed
+    
 # I guess you could fill out your parts here, see what I mean by there just isn't enough stuff
 # Just follow what I was doing, if you don't understand what is happening here or inside modify lmk.Im happy to explain.
-# Apparently we don't do draw curve on the batch ui
-function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal}
+
+
+function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal, "3": three_tone, "X": extreme_contrast, "T": sepia_filter, "P": posterize_filter}
 
 
 def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
@@ -56,6 +60,16 @@ def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
                 img = function_map[filter_arg]("aqua", "blood", "lemon", img)
             elif filter_arg == "E":
                 img = function_map[filter_arg](img, 15)
+            elif filter_arg == "V":
+                img = function_map[filter_arg](img)
+            elif filter_arg == "H":
+                img = function_map[filter_arg](img)
+            elif filter_arg == "X":
+                img = function_map[filter_arg](img)
+            elif filter_arg == "T":
+                img = function_map[filter_arg](img)
+            elif filter_arg == "P":
+                img = function_map[filter_arg](img)
             else:
                 img = function_map[filter_arg](img)
         save_as(img, command["Save"])  # Save image to user inputted location
