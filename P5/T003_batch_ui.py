@@ -32,26 +32,23 @@ def _get_args() -> List[List[str]]:  # Mayukh Gautam
 
 def _parse_args(unparsed: List[List[str]]) -> List[dict]:
     """
-    Forget the number of arguments part that doesnt need to be in the dictionary
     Return a list of dictionaries. Each dictionary corresponds to one line in the batch file
     {"Image": fn (Image), "Save": sv (str), "Filters": list ("str")}
     """
-    main_list = []
-    for command in unparsed:
-        parsed = dict()
-        img = Image(filename=unparsed[0])
-        save = unparsed[1]
-        a = unparsed[2:]
-        parsed.update({"Image": img})
-        main_list.append(parsed)
-
-    parsed = []
-    for lists in _get_args():
-        parsed.append(dict())
-    return parsed
     
-# I guess you could fill out your parts here, see what I mean by there just isn't enough stuff
-# Just follow what I was doing, if you don't understand what is happening here or inside modify lmk.Im happy to explain.
+    main_list = []
+    i = 0
+    for lines in unparsed:
+        parsed = dict()
+        file = unparsed[i]
+        img = Image(file[0]) #make an image type
+        save = file[1]
+        filters = file[2:]
+        parsed.update({"Image": img, "Save": save, "Filters": filters})
+        main_list.append(parsed)
+        i += 1
+            
+    return main_list
 
 
 function_map = {"E": detect_edges, "V": flip_vertical, "H": flip_horizontal, "3": three_tone, "X": extreme_contrast,
