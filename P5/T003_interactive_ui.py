@@ -96,23 +96,16 @@ def draw_curve_ui (image: Image) -> Image:
     must be added along with the coordinates.
     >>> : l
     >>> : d
-    >>> input the x corrdinate of the desired point or stop to finish inputing points : 1
-    >>> input the y coordinate of the desired point: 1
-    >>> input the x corrdinate of the desired point or stop to finish inputing points : 30
-    >>> input the y coordinate of the desired point: 30 
-    >>> input the x corrdinate of the desired point or stop to finish inputing points : stop
+    >>> How many coordinates would you like to input?
+    >>> 2
+    >>>Enter coordinate n.1. With this format: x,y 
+    >>> 1,1
+    >>>Enter coordinate n.2. With this format: x,y
+    >>> 300,300
     '''
     col = "lemon"
-    coords = []
-    x = input("input the x coordinate of the desired point or stop to finish inputing points:  ")
-    while x != 'stop':
-        y = input("input the y coordinate of the desired point: ")
-        y = int(y)
-        x = int(x)
-        tup = (x,y)
-        coords += [tup]
-        x = input("input the x coordinate of the desired point or stop to stop inputing points:  ")
-    return draw_curve(image, col, coords)[0]
+    
+    return draw_curve(image, col)[0]
     
 # all values in command dict are functions, once coded for their quotations should be removed
 command_dict = {'L': load_image_ui, 'S': save_as_ui, '3': three_tone_ui, 
