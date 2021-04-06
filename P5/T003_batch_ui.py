@@ -41,7 +41,7 @@ def _parse_args(unparsed: List[List[str]]) -> List[dict]:
     for lines in unparsed:
         parsed = dict()
         file = lines
-        img = Image(file[0]) #make an image type
+        img = Image(file[0])  # make an image type
         save = file[1]
         filters = file[2:]
         parsed.update({"Image": img, "Save": save, "Filters": filters})
@@ -72,6 +72,4 @@ def modify() -> None:  # Mayukh Gautam, Jacob Ridgway
 
 if __name__ == '__main__':
     # modify will act as the main function. It will call all other functions
-    # modify()
-    l = [1, 2, 3, 4, 5, 6, 7]
-    print(l[2:])
+    modify()
