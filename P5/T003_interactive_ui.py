@@ -107,7 +107,6 @@ def draw_curve_ui (image: Image) -> Image:
     
     return draw_curve(image, col)[0]
     
-# all values in command dict are functions, once coded for their quotations should be removed
 command_dict = {'L': load_image_ui, 'S': save_as_ui, '3': three_tone_ui, 
                'X': extreme_ui, 'T': sepia_ui, 'P': posterize_ui,
                'E': detect_edges_ui, 'D': draw_curve_ui, 'V':flip_vertical,
@@ -115,7 +114,6 @@ command_dict = {'L': load_image_ui, 'S': save_as_ui, '3': three_tone_ui,
    
  
 #Main UI
-#image = load_image(choose_file()) #This line should be removed once the load_image function is added 
 command = str.capitalize(command)
 while command != 'Q':
     command = str.capitalize(command)
