@@ -37,16 +37,15 @@ def _parse_args(unparsed: List[List[str]]) -> List[dict]:
     """
     
     main_list = []
-    i = 0
+    
     for lines in unparsed:
         parsed = dict()
-        file = unparsed[i]
+        file = lines
         img = Image(file[0]) #make an image type
         save = file[1]
         filters = file[2:]
         parsed.update({"Image": img, "Save": save, "Filters": filters})
         main_list.append(parsed)
-        i += 1
             
     return main_list
 
