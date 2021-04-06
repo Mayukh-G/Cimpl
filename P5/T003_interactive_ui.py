@@ -81,9 +81,9 @@ def detect_edges_ui (image: Image) -> Image:
     '''
     Takes the image from the UI and prompts the user to give the additional 
     threshold value
-    >>>
-    >>> Need to add examples 
-    >>>
+    >>> : L
+    >>> : E
+    >>> input threshold value: 10
     '''
     threshold = float(input("input threshold value: "))
     image = detect_edges(image, threshold)
@@ -94,20 +94,24 @@ def draw_curve_ui (image: Image) -> Image:
     Takes the image from the UI and propmts the user to provide the additional 
     nessary information to run the draw curve function, the color of the line 
     must be added along with the coordinates.
-    >>>
-    >>>  Need to add examples 
-    >>>
+    >>> : l
+    >>> : d
+    >>> input the x corrdinate of the desired point or stop to finish inputing points : 1
+    >>> input the y coordinate of the desired point: 1
+    >>> input the x corrdinate of the desired point or stop to finish inputing points : 30
+    >>> input the y coordinate of the desired point: 30 
+    >>> input the x corrdinate of the desired point or stop to finish inputing points : stop
     '''
-    col = input("input the color of the line ")
+    col = "lemon"
     coords = []
-    x = input("input the x coordinate of the desired point or stop to stop inputing points  ")
+    x = input("input the x coordinate of the desired point or stop to finish inputing points:  ")
     while x != 'stop':
-        y = input("input the y coordinate of the desired point ")
+        y = input("input the y coordinate of the desired point: ")
         y = int(y)
         x = int(x)
         tup = (x,y)
         coords += [tup]
-        x = input("input the x coordinate of the desired point or stop to stop inputing points  ")
+        x = input("input the x coordinate of the desired point or stop to stop inputing points:  ")
     return draw_curve(image, col, coords)[0]
     
 # all values in command dict are functions, once coded for their quotations should be removed
