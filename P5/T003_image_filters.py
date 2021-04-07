@@ -82,7 +82,7 @@ def flip_vertical(image: Image) -> Image:  # Alex Watson
     return vert_flipped
 
 
-def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]: # Mayukh Gautam
+def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]:  # Mayukh Gautam
     # Helped by Jacob Ridgway
     """
     Returns coefficients of interpolating polynomial as a list, and coefficients of the
@@ -104,7 +104,7 @@ def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]: # Mayukh G
     return npy.polyfit(x_point, y_point, degree)
 
 
-def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float: # Mayukh Gautam
+def _exhaustive_search(max_x: int, polycoeff: list, val: int) -> float:  # Mayukh Gautam
     # Helped by Alexander Christie
     '''
     Solves f(x)-val=0 for x between 0 and max_x where polycoeff contains the
@@ -210,7 +210,7 @@ def draw_curve(image: Image, col: str, coords: List[Tuple[int, int]] = None) -> 
         num_coords = input("How many coordinates would you like to input?\n")
         for x in range(int(num_coords)):
             # Formats user input into a more tuple friendly format
-            temp = input(f"Enter coordinate n.{x+1}. With this format: x,y\n").strip(punctuation).split(",")
+            temp = input(f"Enter coordinate n.{x + 1}. With this format: x,y\n").strip(punctuation).split(",")
             # Changing the string to an integer
             for i in range(len(temp)):
                 temp[i] = int(temp[i])
@@ -395,3 +395,103 @@ def three_tone(colour1: str, colour2: str, colour3: str, image: Image) -> Image:
     return duplicate
 
 
+def combine(img_1: Image, img_2: Image, img_3: Image) -> Image:  # Mayukh Gautam
+    """
+    Takes in three Cimpl Image objects of matching dimentions. One filtered red, one filtered green, and one filtered
+    blue. Then combines the three filtered images into one final image.
+
+    :returns: The combined image object
+
+    >>> img1 = Image(filename=choose_file())
+    >>> img2 = Image(filename=choose_file())
+    >>> img3 = Image(filename=choose_file())
+    >>> res = combine(img1, img2, img3)
+    >>> show(res)
+    """
+    final_img = Image(height=img_1.get_height(), width=img_1.get_width())
+
+    for i, j, (r, g, b) in img_1:
+        colour_2, colour_3 = img_2.get_color(i, j), img_3.get_color(i, j)
+        # Since we don't know which image is filtered to which colour
+        r = (r + colour_2[0] + colour_3[0]) if (r + colour_2[0] + colour_3[0]) <= 255 else 255
+        g = (g + colour_2[1] + colour_3[1]) if (g + colour_2[1] + colour_3[1]) <= 255 else 255
+        b = (b + colour_2[2] + colour_3[2]) if (b + colour_2[2] + colour_3[2]) <= 255 else 255
+        final_img.set_color(i, j, Color(r, g, b))
+    return final_img
+
+
+def blue_filter(image: Image) -> Image:   # Author: Jacob Ridgway
+    """
+    Returns a copy of original image with the red and green channels removed,
+    leaving only the blue channel.
+
+    >>> file = choose_file()
+    >>> image = load_image(file)
+    >>> blue_filtered_image = blue_filter(image)
+    >>> show(blue_filtered_image)
+    """
+
+    new_image = copy(image)
+    for pixel in new_image:
+        x, y, (r, g, b) = pixel
+        new_colour = create_color(0, 0, b)
+        set_color(new_image, x, y, new_colour)
+
+    return new_image
+
+
+def green_filter(image: Image) -> Image:
+    """
+    Returns a copy of image; that is, an image that only contains the green
+    components of the original image.
+
+    >>> image = load_image(choose_file())
+    >>> green_filtered = green_filter(image)
+    >>> show(green_filtered)
+    """
+
+    new_image = copy(image)
+    for x, y, (r, g, b) in image:
+        green = create_color(0, g, 0)
+        set_color(new_image, x, y, green)
+    return new_image
+
+
+def red_channel(image: Image) -> Image:
+    '''
+    Returns a copy of the image as a new image containing only the red component
+    of the original r,g,b color.
+    >>> image = choose_file()
+    >>>show(image)
+    >>> red_image = red_channel(image)
+    >>>show(red_image)
+
+    '''
+    duplicate = copy(image)
+    for pixle in duplicate:
+        x, y, (r, g, b) = pixle
+        new_color = create_color(r, 0, 0)
+        set_color(duplicate, x, y, new_color)
+    return duplicate
+
+
+if __name__ == '__main__':
+    # Calls every filter. This should not be run unless testing
+    image = Image(filename=choose_file())
+    show(detect_edges(image, 15))
+    show(flip_horizontal(image))
+    show(flip_vertical(image))
+    show(draw_curve(image, "lemon")[0])
+    show(extreme_contrast(image))
+    show(posterize_filter(image))
+    show(sepia_filter(image))
+    show(three_tone("blood", "lemon", "aqua", image))
+
+    red = red_channel(image)
+    show(red)
+    blue = blue_filter(image)
+    show(blue)
+    green = green_filter(image)
+    show(green)
+
+    show(combine(red, blue, green))

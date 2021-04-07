@@ -1,2 +1,2 @@
-miss_sullivan.jpg test1.jpg 3 X P
-miss_sullivan.jpg test2.jpg  V H
+p2-original.png test1.jpg 3 X P T
+p2-original.png test2.jpg  V H

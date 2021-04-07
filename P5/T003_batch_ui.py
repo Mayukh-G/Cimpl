@@ -30,7 +30,7 @@ def _get_args() -> List[List[str]]:  # Mayukh Gautam
     return args
 
 
-def _parse_args(unparsed: List[List[str]]) -> List[dict]:
+def _parse_args(unparsed: List[List[str]]) -> List[dict]:  # Jacob Ridgway
     """
     Return a list of dictionaries. Each dictionary corresponds to one line in the batch file
     {"Image": fn (Image), "Save": sv (str), "Filters": list ("str")}

@@ -8,7 +8,6 @@ from point_manipulation import sort_points
 import numpy as npy
 import string
 
-
 def _interpolation(coord_list: List[Tuple[int, int]]) -> List[float]:
     # Helped by Jacob Ridgway
     """
