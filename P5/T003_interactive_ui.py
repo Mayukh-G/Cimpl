@@ -20,28 +20,25 @@ Q)uit \n \n : ")
 def load_image_ui (image: Image) -> Image: 
     '''
     Loads the user's desired image
-    >>>
-    >>> Need Examples
-    >>>
+    >>>L
+    >>>l
     '''
     image = load_image(choose_file())
     return image
 
 def save_as_ui (image: Image) -> None :
     '''
-    Saves the users image. 
-    >>>
-    >>>Need Examples
-    >>>
+    Saves the users image with the selected file name.  
+    >>>S
+    >>>s
     '''
     save_as(image)
     
 def three_tone_ui (image: Image) -> Image:
     '''
     Takes the image from the ui and applie a three tone filter. 
-    >>>
-    >>>Need Examples
-    >>>
+    >>>L
+    >>>3
     '''
     image = three_tone('cyan', 'blood', 'lemon', image)
     return image
@@ -49,9 +46,8 @@ def three_tone_ui (image: Image) -> Image:
 def extreme_ui (image: Image) -> Image:
     '''
     Takes and image from the ui and applies an extreme contrast filter
-    >>>
-    >>>Need Examples
-    >>>
+    >>>L
+    >>>X
     '''
     image = extreme_contrast(image)
     return image
@@ -59,9 +55,8 @@ def extreme_ui (image: Image) -> Image:
 def sepia_ui (image: Image) -> Image:
     '''
     Takes and image from the ui and applies a sepia filter. 
-    >>>
-    >>>Need Examples
-    >>>
+    >>>L
+    >>>S
     '''
     image = sepia_filter(image)
     return image
@@ -69,9 +64,8 @@ def sepia_ui (image: Image) -> Image:
 def posterize_ui(image: Image) -> Image:
     '''
     Takes an image from the user and applies a posterizing filter. 
-    >>>
-    >>>Need Examples
-    >>>
+    >>>L
+    >>>P
     '''
     image = posterize_filter(image)
     return image
