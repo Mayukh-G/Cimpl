@@ -26,7 +26,7 @@ The program can be used by a simple user interface or by selecting a batch file.
 Using the batch file requires the user to type the file name into the terminal.
 The batch file has lines of text that indicate a) the image name b) the new save name and
 c) the filters to be applied to the image. The batch UI will perform all operations at once and save
-the new images to a folder. 
+the new images to a folder. The batch filter does now use the draw function. 
 
 
 Installation
