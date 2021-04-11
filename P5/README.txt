@@ -41,24 +41,24 @@ numpy v.1.20.1
 Credits
 ---------------------------------------------
 - Mayukh Gautam
-  -_image_boarder_finding
-  -posterize_filter
-  -combine
+  - draw
+  - posterize_filter
+  - combine
   
 - Alex Watson
-  -flip_vertical
-  -extreme_contrast
-  -green_filter
+  - flip_vertical
+  - extreme_contrast
+  - green_filter
   
 - Alex Christie
-  -detect_edges
-  -three_tone
-  -red_channel
+  - detect_edges
+  - three_tone
+  - red_channel
   
 - Jacob Ridgway
-  -flip_horizontal
-  -sepia_filter
-  -blue_filter
+  - flip_horizontal
+  - sepia_filter
+  - blue_filter
 
 
 ============================================================================

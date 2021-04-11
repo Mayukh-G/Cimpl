@@ -3,6 +3,8 @@ Author : Alexander Christie, Alex Watson
 Student : 101185138, 101178559
 Group: T003
 '''
+# Milestone 3
+# Submitted : 08/04/2021
 
 from Cimpl import *
 from T003_image_filters import *
