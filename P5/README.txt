@@ -34,7 +34,8 @@ Installation
 When installing this program, it required to have the following installed as prerequisites:
 Python v.3.6+
 Cimpl v.1.04
-numpy v.1.20.1
+numpy v.1.20+
+Pillow v.8.1+
 
 
 
