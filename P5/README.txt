@@ -11,14 +11,14 @@ Description
 ---------------------------------------------
 - This project is a modular photo-editing program that allows users to interact through a
 text-based interface to load an image, apply a variety of image filters cumulatively 
-and save the new filtered photo. This program allows for the filters to be applied while 
+and save the new filtered photo with a desired name. This program allows for the filters to be applied while 
 keeping the original photo unchanged. After each filter is applied the program will 
 display the current iteration of the photo. 
 
-- The project is made up of xx files:
-  xxxx
-  xxxx
-  xxxx
+- The project is made up of three files:
+  T003_interactive_ui.py
+  T003_batch_ui.py
+  T003_image_filters.py
 
 Usage
 ---------------------------------------------
